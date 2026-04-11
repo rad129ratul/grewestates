@@ -16,7 +16,7 @@ Header
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <a href=""><img src="<?php echo get_theme_mod('ali_logo'); ?>" alt=""></a>
+                    <a href=""><img src="<?php echo get_theme_mod('main_logo'); ?>" alt=""></a>
                 </div>
                 <div class="col-md-9"></div>
             </div>
