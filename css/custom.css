@@ -31,10 +31,9 @@ a.redmore {
     background: #ea1a70;
     color: #fff;
     font-size: 15px;
-    text-decoration: navajowhite;
+    text-decoration: none;
     display: inline-block;
     padding: 10px 25px;
-    border-radius: 10px;
     transition: 0.5s;
 }
 
@@ -194,7 +193,9 @@ a.redmore:hover {
 
 #body_area .blog_area {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 17px;
+    background: rgb(243, 243, 243);
+    padding: 15px;
 }
 
 #body_area .post_thumb {
@@ -231,6 +232,37 @@ a.redmore:hover {
 
 #body_area .post_details h2 a:hover {
     color: #ea1a70;
+}
+
+/*===========================================
+  Pagenav Area Styling
+===========================================*/
+#page_nav {}
+
+#page_nav p.pages {
+    background: #ea1a70;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+#page_nav p.pages span {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+#page_nav .page-numbers {
+    background: #ea1a70;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    transition: 0.5s;
+}
+
+#page_nav .page-numbers.current,
+#page_nav .page-numbers:hover {
+    background: #262626;
 }
 
 /*===========================================
