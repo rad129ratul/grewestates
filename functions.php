@@ -40,14 +40,17 @@ function customizar_register($wp_customize){
     'description' => 'If you interested to update your header area, you can do it here.'
   ));
 
+  // $wp_customize->add_setting('main_logo', array(
+  //   'default' => get_bloginfo('template_directory') . '/img/logo.png',
+  // ));
   $wp_customize->add_setting('main_logo', array(
-    'default' => get_bloginfo('template_directory') . '/img/logo.png',
+    'default' => get_template_directory_uri() . '/img/logo.png',
   ));
 
   $wp_customize-> add_control(new WP_Customize_Image_Control($wp_customize, 'main_logo', array(
     'label' => 'Logo Upload',
     'description' => 'If you interested to change or update your logo you can do it.',
-    'setting' => 'main_logo',
+    'settings' => 'main_logo',
     'section' => 'header_area',
   ) ));
 
