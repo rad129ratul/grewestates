@@ -1,5 +1,9 @@
 functions.php
-directory_map.txt
+inc/theme_function.php
+inc/enqueue.php
+inc/menu_register.php
+inc/default.php
+.DS_Store
 index.php
 css/bootstrap.css
 css/custom.css
@@ -7,4 +11,6 @@ directory_map.md
 js/bootstrap.js
 screenshot.png
 img/logo.png
+header.php
+footer.php
 style.css

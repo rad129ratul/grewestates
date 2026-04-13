@@ -2,7 +2,13 @@
  Common CSS
 ========================================*/
 body {
-    font-family: "Kaisei Decol", serif;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
     line-height: 1.5em;
 }
@@ -21,23 +27,26 @@ img {
     max-width: 100%;
 }
 
+a.redmore {
+    background: #ea1a70;
+    color: #fff;
+    font-size: 15px;
+    text-decoration: navajowhite;
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+a.redmore:hover {
+    background: #262626;
+}
+
 /*=======================================
  Header Area Style
 ========================================*/
-#notice {
-    background: #ff6b6b;
-    padding: 10px 0;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-#notice h2 {
-    margin: 0;
-}
-
 #header_area {
-    padding: 0px 0 15px;
+    padding: 15px 0;
 }
 
 #header_area .col-md-9 ul {
@@ -174,6 +183,54 @@ img {
 
 #header_area.center_menu .col-md-9 ul ul {
     text-align: left;
+}
+
+/*=======================================
+ Index Page Style
+========================================*/
+#body_area {
+    padding: 45px 0;
+}
+
+#body_area .blog_area {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#body_area .post_thumb {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#body_area .post_thumb img {
+    transition: 0.5s;
+    width: 100%;
+    display: block;
+}
+
+#body_area .post_thumb:hover img {
+    transform: scale(1.1);
+}
+
+#body_area .post_details {
+    width: 100%;
+}
+
+#body_area .post_details h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#body_area .post_details h2 a {
+    color: #262626;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+#body_area .post_details h2 a:hover {
+    color: #ea1a70;
 }
 
 /*===========================================
