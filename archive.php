@@ -4,6 +4,8 @@
 */ 
 get_header(); ?>
 
+
+<h1>this is archive tamplate</h1>
   <section id="body_area">
     <div class="container">
       <div class="row">
