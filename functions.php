@@ -77,6 +77,24 @@ function customizar_register($wp_customize){
     ),
   ));
 
+
+  // Footer Option
+  $wp_customize->add_section('footer_option', array(
+    'title' => __('Footer Option', 'Domain'),
+    'description' => 'If you interested to change or update your footer settings you can do it.'
+  ));
+
+  $wp_customize->add_setting('copyright_section', array(
+    'default' => '&copy; Copyright 2021 | Procoder BD',
+  ));
+
+  $wp_customize-> add_control('copyright_section', array(
+    'label' => 'Copyright Text',
+    'description' => 'If need you can update your copyright text from here',
+    'setting' => 'copyright_section',
+    'section' => 'footer_option',
+  ));
+
 }
 
 add_action('customize_register', 'customizar_register');
@@ -84,3 +102,12 @@ add_action('customize_register', 'customizar_register');
 
 // Menu Register
 register_nav_menu( 'main_menu', __('Main Menu', 'Domain') );
+
+// Walker Menu Properties
+function nav_description( $item_output, $item, $args){
+  if( !empty ($item->description)){
+    $item_output = str_replace($args->link_after . '</a>', '<span class="walker_nav">' . $item->description . '</span>' . $args->link_after . '</a>', $item_output);
+  }
+  return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'nav_description', 10, 3);
