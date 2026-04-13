@@ -36,7 +36,7 @@ add_action('wp_enqueue_scripts', 'add_google_fonts');
 //Theme Function
 function customizar_register($wp_customize){
   $wp_customize->add_section('header_area', array(
-    'title' =>__('Header Area', 'ratul'),
+    'title' =>__('Header Area', 'Domain'),
     'description' => 'If you interested to update your header area, you can do it here.'
   ));
 
@@ -60,4 +60,4 @@ add_action('customize_register', 'customizar_register');
 
 
 // Menu Register
-register_nav_menu( 'main_menu', __('Main Menu', 'ratul') );
+register_nav_menu( 'main_menu', __('Main Menu', 'Domain') );
