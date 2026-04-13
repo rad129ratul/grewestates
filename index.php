@@ -16,7 +16,7 @@ Header
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a href="<?php echo home_url(); ?>"><img src="<?php echo get_theme_mod('main_logo'); ?>" alt=""></a>
+          <a href="<?php echo home_url(); ?>"><img src="<?php echo get_theme_mod('main_logo', get_template_directory_uri() . '/img/logo.png'); ?>" alt=""></a>
         </div>
         <div class="col-md-9">
           <?php wp_nav_menu( array('theme_location' => 'main_menu', 'menu_id' => 'nav') ); ?>
