@@ -54,6 +54,29 @@ function customizar_register($wp_customize){
     'section' => 'header_area',
   ) ));
 
+  // Menu Position Option
+  $wp_customize->add_section('menu_option', array(
+    'title' => __('Menu Position Option', 'Domain'),
+    'description' => 'If you interested to change your menu position you can do it.'
+  ));
+
+  $wp_customize->add_setting('menu_position', array(
+    'default' => 'right_menu',
+  ));
+
+  $wp_customize-> add_control('menu_position', array(
+    'label' => 'Menu Position',
+    'description' => 'Select your menu position',
+    'setting' => 'menu_position',
+    'section' => 'menu_option',
+    'type' => 'radio',
+    'choices' => array(
+      'left_menu' => 'Left Menu',
+      'right_menu' => 'Right Menu',
+      'center_menu' => 'Center Menu',
+    ),
+  ));
+
 }
 
 add_action('customize_register', 'customizar_register');
