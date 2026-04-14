@@ -7,6 +7,9 @@
 include_once('inc/default.php');
 
 
+// Adding Custom post
+include_once('inc/custom_post.php');
+
 // Theme CSS and jQuery File calling
 include_once('inc/enqueue.php');
 
