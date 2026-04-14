@@ -61,6 +61,39 @@ function customizar_register($wp_customize){
     'section' => 'footer_option',
   ));
 
+  // Theme Color
+  $wp_customize-> add_section('colors', array(
+    'title' => __('Theme Color', 'Domain'),
+    'description' => 'If need you can change your theme color.',
+  ));
+
+  $wp_customize ->add_setting('bg_color', array(
+    'default' => '#ffffff',
+  ));
+  $wp_customize->add_control( new WP_Customize_color_control($wp_customize, 'bg_color', array(
+    'label' => 'Background Color',
+    'section' => 'colors',
+    'settings' => 'bg_color',
+  )));
+  $wp_customize ->add_setting('primary_color', array(
+    'default' => '#ea1a70',
+  ));
+  $wp_customize->add_control( new WP_Customize_color_control($wp_customize, 'primary_color', array(
+    'label' => 'Primary Color',
+    'section' => 'colors',
+    'settings' => 'primary_color',
+  )));
+
 }
 
 add_action('customize_register', 'customizar_register');
+
+function theme_color_cus(){
+  ?>
+  <style>
+    body{background: <?php echo get_theme_mod('bg_color'); ?>}
+    :root{ --pink:<?php echo get_theme_mod('primary_color'); ?>}
+  </style>
+  <?php 
+}
+add_action('wp_head', 'theme_color_cus');
