@@ -1,0 +1,171 @@
+/* =============================================================
+   File: grewestates/assets/css/header.css
+   Purpose: Sticky navbar, logo, nav links, mobile toggle, top bar.
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   TOP BAR — contact strip above the main navbar
+   ------------------------------------------------------------------ */
+.site-topbar {
+    background-color: var(--ge-dark);
+    padding: 0.4rem 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.site-topbar a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color var(--ge-transition);
+}
+
+.site-topbar a:hover {
+    color: var(--ge-gold);
+}
+
+.site-topbar__contact {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.site-topbar__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.site-topbar__social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.site-topbar__social a {
+    font-size: 0.85rem;
+}
+
+/* ------------------------------------------------------------------
+   MAIN NAVBAR
+   ------------------------------------------------------------------ */
+.site-navbar {
+    background-color: var(--ge-white);
+    box-shadow: 0 1px 0 var(--ge-border);
+    padding: 0;
+    transition: background-color var(--ge-transition), box-shadow var(--ge-transition);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+/* Dark, elevated state applied via JS when user scrolls down */
+.site-navbar--scrolled {
+    background-color: var(--ge-dark);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------------------------------------------------
+   LOGO
+   ------------------------------------------------------------------ */
+.site-navbar__logo img {
+    height: 44px;
+    width: auto;
+}
+
+/* ------------------------------------------------------------------
+   NAV LINKS
+   ------------------------------------------------------------------ */
+.site-navbar .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ge-dark);
+    padding: 1.5rem 1rem;
+    position: relative;
+    transition: color var(--ge-transition);
+}
+
+/* Active underline indicator */
+.site-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background-color: var(--ge-gold);
+    transform: scaleX(0);
+    transition: transform var(--ge-transition);
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+    color: var(--ge-gold);
+}
+
+.site-navbar .nav-link:hover::after,
+.site-navbar .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* Scrolled state — flip link colour to white */
+.site-navbar--scrolled .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.site-navbar--scrolled .nav-link:hover,
+.site-navbar--scrolled .nav-link.active {
+    color: var(--ge-gold);
+}
+
+/* ------------------------------------------------------------------
+   CTA BUTTON IN NAV
+   ------------------------------------------------------------------ */
+.site-navbar__cta {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.2rem;
+}
+
+/* ------------------------------------------------------------------
+   MOBILE HAMBURGER TOGGLE
+   ------------------------------------------------------------------ */
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    color: var(--ge-dark);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.site-navbar--scrolled .navbar-toggler {
+    color: var(--ge-white);
+}
+
+/* Collapse menu on mobile — give it the dark background */
+@media (max-width: 991.98px) {
+    .site-navbar .navbar-collapse {
+        background-color: var(--ge-white);
+        border-top: 1px solid var(--ge-border);
+        padding: 1rem;
+    }
+
+    .site-navbar--scrolled .navbar-collapse {
+        background-color: var(--ge-dark);
+        border-top-color: var(--ge-dark-2);
+    }
+
+    .site-navbar .nav-link {
+        padding: 0.6rem 0;
+    }
+
+    .site-navbar .nav-link::after {
+        display: none;
+    }
+
+    .site-navbar__cta {
+        margin-top: 0.75rem;
+        width: 100%;
+        text-align: center;
+    }
+}

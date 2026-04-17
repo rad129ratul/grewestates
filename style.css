@@ -1,0 +1,36 @@
+/*
+ * Theme Name:  GrewEstates
+ * Theme URI:   https://grewdev.com/grewestates
+ * Author:      GrewDev
+ * Author URI:  https://grewdev.com
+ * Description: A premium real estate WordPress theme built for GrewDev agency, Dhaka, Bangladesh.
+ * Version:     1.0.0
+ * Text Domain: grewestates
+ * Tags:        real-estate, property, bootstrap, responsive
+ */
+
+/* =============================================================
+   ROOT DESIGN TOKENS
+   All brand colours, typography, spacing, and utility values.
+   Never override these with page-level CSS — extend via new vars.
+   ============================================================= */
+:root {
+    /* Brand palette */
+    --ge-gold: #C9A84C;
+    --ge-gold-dark: #a88835;
+    --ge-dark: #1a1a1a;
+    --ge-dark-2: #2d2d2d;
+    --ge-light-bg: #F5F5F0;
+    --ge-white: #ffffff;
+    --ge-text: #333333;
+    --ge-muted: #666666;
+    --ge-border: #e0e0e0;
+
+    /* Typography */
+    --ge-font: 'Inter', sans-serif;
+
+    /* Component tokens */
+    --ge-radius: 8px;
+    --ge-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --ge-transition: 0.25s ease;
+}

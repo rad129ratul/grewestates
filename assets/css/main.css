@@ -1,0 +1,211 @@
+/* =============================================================
+   File: grewestates/assets/css/main.css
+   Purpose: Global layout rules, typography, Bootstrap overrides,
+            and shared utility classes.
+   Depends on: style.css (design tokens must be loaded first)
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   BASE RESET & BODY
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ge-font);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ge-text);
+    background-color: var(--ge-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------------
+   TYPOGRAPHY
+   ------------------------------------------------------------------ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--ge-font);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ge-dark);
+}
+
+a {
+    color: var(--ge-gold);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+a:hover {
+    color: var(--ge-gold-dark);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--ge-muted);
+}
+
+/* ------------------------------------------------------------------
+   SHARED LAYOUT
+   ------------------------------------------------------------------ */
+
+/* Ensures footer always sticks to the bottom on short pages. */
+.site {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-content {
+    flex: 1;
+}
+
+/* ------------------------------------------------------------------
+   BOOTSTRAP OVERRIDES
+   Only where Bootstrap defaults conflict with brand tokens.
+   ------------------------------------------------------------------ */
+
+/* Primary button → gold fill */
+.btn-primary {
+    background-color: var(--ge-gold);
+    border-color: var(--ge-gold);
+    color: var(--ge-dark);
+    font-weight: 600;
+    border-radius: var(--ge-radius);
+    transition: background-color var(--ge-transition), border-color var(--ge-transition);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--ge-gold-dark);
+    border-color: var(--ge-gold-dark);
+    color: var(--ge-dark);
+}
+
+/* Outline button → gold border */
+.btn-outline-primary {
+    border-color: var(--ge-gold);
+    color: var(--ge-gold);
+    font-weight: 600;
+    border-radius: var(--ge-radius);
+    transition: background-color var(--ge-transition), color var(--ge-transition);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--ge-gold);
+    border-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+/* ------------------------------------------------------------------
+   SHARED UTILITY CLASSES
+   Reusable helpers used across multiple page templates.
+   ------------------------------------------------------------------ */
+
+/* Gold text accent */
+.text-gold {
+    color: var(--ge-gold);
+}
+
+/* Dark section backgrounds */
+.bg-dark-ge {
+    background-color: var(--ge-dark);
+}
+
+.bg-dark-2-ge {
+    background-color: var(--ge-dark-2);
+}
+
+/* Light warm background */
+.bg-light-ge {
+    background-color: var(--ge-light-bg);
+}
+
+/* Horizontal gold divider used under section headings */
+.ge-divider {
+    display: block;
+    width: 48px;
+    height: 3px;
+    background-color: var(--ge-gold);
+    border-radius: 2px;
+    margin: 0.75rem 0 1.5rem;
+}
+
+.ge-divider--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Card base used by property-card and agent-card components */
+.ge-card {
+    background-color: var(--ge-white);
+    border-radius: var(--ge-radius);
+    box-shadow: var(--ge-shadow);
+    overflow: hidden;
+    transition: box-shadow var(--ge-transition), transform var(--ge-transition);
+}
+
+.ge-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.13);
+    transform: translateY(-3px);
+}
+
+/* Badge: For Sale / For Rent */
+.ge-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 4px;
+}
+
+.ge-badge--sale {
+    background-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+.ge-badge--rent {
+    background-color: var(--ge-dark-2);
+    color: var(--ge-white);
+}
+
+/* Overlay used on images (property card, hero) */
+.ge-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26, 26, 26, 0.65) 0%, transparent 55%);
+}
+
+/* ------------------------------------------------------------------
+   FORM CONTROLS — GLOBAL OVERRIDES
+   ------------------------------------------------------------------ */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--ge-gold);
+    box-shadow: 0 0 0 0.2rem rgba(201, 168, 76, 0.2);
+}
+
+/* ------------------------------------------------------------------
+   ACCESSIBILITY
+   Focus-visible ring using brand gold.
+   ------------------------------------------------------------------ */
+:focus-visible {
+    outline: 2px solid var(--ge-gold);
+    outline-offset: 3px;
+}
