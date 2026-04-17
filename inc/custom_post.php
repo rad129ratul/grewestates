@@ -13,7 +13,7 @@ function custom_service(){
         'view_item' => ('View Service'),
         'not_found' => ('Sorry, we cound\'n find the service you are looking for.'),
       ),
-      'menu_icon' => 'dashicons-editor-paragraph',
+      'menu_icon' => 'dashicons-networking',
       'public' => true,
       'publicly_queryable' => true,
       'exclude_from_search' => true,
