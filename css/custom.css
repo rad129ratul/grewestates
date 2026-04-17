@@ -49,6 +49,15 @@ input[type="submit"].submit:hover {
     background: #262626;
 }
 
+.button {
+    background: var(--pink);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    display: inline-block;
+    text-decoration: none;
+}
+
 /*=======================================
  Header Area Style
 ========================================*/
