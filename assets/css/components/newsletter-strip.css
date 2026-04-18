@@ -1,0 +1,74 @@
+/* =============================================================
+   File: grewestates/assets/css/components/newsletter-strip.css
+   Purpose: Newsletter subscription band — used on Properties
+            and any future page that needs it.
+   Enqueued globally via inc/enqueue.php.
+   ============================================================= */
+
+.newsletter-strip {
+    background-color: var(--ge-dark-2);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.newsletter-strip__heading {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--ge-white);
+    margin-bottom: 0.6rem;
+}
+
+.newsletter-strip__subtext {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 480px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.7;
+}
+
+.newsletter-strip__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-strip__input {
+    flex: 1 1 260px;
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+    font-family: var(--ge-font);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--ge-radius);
+    background-color: rgba(255, 255, 255, 0.07);
+    color: var(--ge-white);
+    outline: none;
+    transition: border-color var(--ge-transition);
+}
+
+.newsletter-strip__input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-strip__input:focus {
+    border-color: var(--ge-gold);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-strip__btn {
+    flex-shrink: 0;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 479.98px) {
+
+    .newsletter-strip__input,
+    .newsletter-strip__btn {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}

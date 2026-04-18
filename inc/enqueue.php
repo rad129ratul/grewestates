@@ -85,6 +85,14 @@ function grewestates_enqueue_assets() {
         $version
     );
 
+    // Newsletter strip — used on Properties page and potentially others.
+    wp_enqueue_style(
+        'grewestates-component-newsletter-strip',
+        $uri . '/assets/css/components/newsletter-strip.css',
+        [ 'grewestates-main' ],
+        $version
+    );
+
     // ------------------------------------------------------------------
     // COMPONENT STYLES — loaded globally (components appear site-wide).
     // ------------------------------------------------------------------
