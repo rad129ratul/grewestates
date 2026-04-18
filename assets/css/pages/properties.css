@@ -71,7 +71,7 @@
     border-bottom: 1px solid var(--ge-border);
     padding: 1rem 0;
     position: sticky;
-    top: 0;
+    top: 4.5rem;
     /* Stacks below the navbar which is also sticky */
     z-index: 900;
     box-shadow: var(--ge-shadow);
@@ -214,7 +214,7 @@
     border-radius: var(--ge-radius);
     padding: 1.25rem;
     position: sticky;
-    top: 4.5rem;
+    top: 9rem;
     /* Clears the sticky search bar */
 }
 
