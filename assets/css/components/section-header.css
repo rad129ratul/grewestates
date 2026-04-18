@@ -1,0 +1,92 @@
+/* =============================================================
+   File: grewestates/assets/css/components/section-header.css
+   Purpose: Shared section-header and cta-banner component styles.
+            Loaded globally via main.css — no page-level scoping.
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   SECTION HEADER
+   ------------------------------------------------------------------ */
+.section-header {
+    margin-bottom: 2.5rem;
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: var(--ge-muted);
+    line-height: 1.75;
+    margin-bottom: 0;
+    max-width: 600px;
+}
+
+/* Centred variant constrains the subtext width and centres it */
+.section-header__subtext--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ------------------------------------------------------------------
+   CTA BANNER
+   ------------------------------------------------------------------ */
+.cta-banner {
+    background-color: var(--ge-dark);
+    padding: 5rem 0;
+    /* Subtle texture overlay for depth */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative diagonal gold accent behind the content */
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(201, 168, 76, 0.08) 0%,
+            transparent 60%);
+    pointer-events: none;
+}
+
+.cta-banner__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner__heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--ge-white);
+    margin-bottom: 1rem;
+}
+
+.cta-banner__subtext {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+}
+
+.cta-banner__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cta-banner__btn {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}

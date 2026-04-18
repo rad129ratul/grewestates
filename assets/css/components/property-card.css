@@ -1,0 +1,124 @@
+/* =============================================================
+   File: grewestates/assets/css/components/property-card.css
+   Purpose: Styles for the property-card component.
+            Enqueued globally via inc/enqueue.php (grewestates-component-property-card).
+   ============================================================= */
+
+/* NOTE: .ge-card base (shadow, radius, hover) lives in main.css.
+   Only property-card-specific overrides are here. */
+
+.property-card {
+    position: relative;
+    /* Required for Bootstrap .stretched-link to cover the full card */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ------------------------------------------------------------------
+   IMAGE AREA
+   ------------------------------------------------------------------ */
+.property-card__image-wrap {
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    /* Height fills the grid row on the home featured grid */
+    flex: 1;
+    min-height: 200px;
+}
+
+.property-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.property-card:hover .property-card__image {
+    transform: scale(1.04);
+}
+
+/* Sale / Rent badge — top-left corner */
+.property-card__badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+}
+
+/* Price — bottom-left, sitting above the gradient overlay */
+.property-card__price-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    z-index: 2;
+}
+
+.property-card__price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ge-white);
+}
+
+/* ------------------------------------------------------------------
+   CARD BODY
+   ------------------------------------------------------------------ */
+.property-card__body {
+    padding: 1rem 1.1rem 1.25rem;
+    background-color: var(--ge-white);
+}
+
+.property-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+}
+
+.property-card__title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.property-card__location {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    margin-bottom: 0.75rem;
+}
+
+.property-card__location i {
+    color: var(--ge-gold);
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------------
+   META ROW — beds / baths / sqft
+   ------------------------------------------------------------------ */
+.property-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--ge-border);
+}
+
+.property-card__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    font-weight: 500;
+}
+
+.property-card__meta-item i {
+    color: var(--ge-gold);
+    font-size: 0.95rem;
+}

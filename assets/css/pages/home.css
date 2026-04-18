@@ -1,0 +1,509 @@
+/* =============================================================
+   File: grewestates/assets/css/pages/home.css
+   Purpose: Styles exclusive to the Home page template.
+   Depends on: main.css (tokens + utilities must be loaded first)
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   HERO
+   ------------------------------------------------------------------ */
+.home-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('../../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+    padding: 7rem 0 5rem;
+}
+
+.home-hero__overlay {
+    position: absolute;
+    inset: 0;
+    /* Dark gradient: dense at bottom-left where text sits, fading top-right */
+    background: linear-gradient(135deg,
+            rgba(26, 26, 26, 0.82) 0%,
+            rgba(26, 26, 26, 0.55) 60%,
+            rgba(26, 26, 26, 0.25) 100%);
+}
+
+.home-hero__inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* Eyebrow label above headline */
+.home-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ge-gold);
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.85rem;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 20px;
+    background-color: rgba(201, 168, 76, 0.1);
+    backdrop-filter: blur(4px);
+}
+
+.home-hero__heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ge-white);
+    margin-bottom: 1.25rem;
+}
+
+.home-hero__subtext {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 520px;
+    margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------------
+   HERO SEARCH BAR
+   White pill-shaped bar that sits below the hero text.
+   ------------------------------------------------------------------ */
+.home-hero__search-bar {
+    margin-top: 2.5rem;
+    background-color: var(--ge-white);
+    border-radius: var(--ge-radius);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    overflow: hidden;
+}
+
+.home-hero__search-fields {
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.home-hero__search-field {
+    flex: 1 1 160px;
+    padding: 0.85rem 1.25rem;
+    min-width: 0;
+}
+
+.home-hero__field-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ge-dark);
+    margin-bottom: 0.3rem;
+}
+
+.home-hero__field-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.home-hero__field-input i {
+    color: var(--ge-gold);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.home-hero__input,
+.home-hero__select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+    color: var(--ge-text);
+    width: 100%;
+    padding: 0;
+    font-family: var(--ge-font);
+    cursor: pointer;
+}
+
+.home-hero__select {
+    appearance: none;
+}
+
+.home-hero__input::placeholder {
+    color: var(--ge-muted);
+}
+
+.home-hero__search-divider {
+    width: 1px;
+    background-color: var(--ge-border);
+    align-self: stretch;
+    margin: 0.75rem 0;
+    flex-shrink: 0;
+}
+
+.home-hero__search-btn {
+    flex-shrink: 0;
+    align-self: center;
+    margin-right: 0.25rem;
+    padding: 0.7rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+/* Mobile: stack the search bar fields */
+@media (max-width: 767.98px) {
+    .home-hero {
+        padding: 6rem 0 3rem;
+        align-items: flex-start;
+    }
+
+    .home-hero__search-bar {
+        padding: 1rem;
+    }
+
+    .home-hero__search-fields {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .home-hero__search-field {
+        padding: 0.5rem 0;
+    }
+
+    .home-hero__search-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0.25rem 0;
+    }
+
+    .home-hero__search-btn {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+    }
+}
+
+/* ------------------------------------------------------------------
+   FEATURED RESIDENCES
+   ------------------------------------------------------------------ */
+.home-featured__view-all {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ge-gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap var(--ge-transition);
+}
+
+.home-featured__view-all:hover {
+    color: var(--ge-gold-dark);
+    gap: 0.75rem;
+}
+
+/* 2×2 masonry-style grid where the last card is wide */
+.home-featured__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 320px 320px;
+    gap: 1rem;
+}
+
+/* Fourth card spans both columns on the bottom row */
+.home-featured__grid .property-card:last-child {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 767.98px) {
+    .home-featured__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .home-featured__grid .property-card:last-child {
+        grid-column: auto;
+    }
+}
+
+/* ------------------------------------------------------------------
+   PROPERTY TYPE GRID (Browse by Type)
+   ------------------------------------------------------------------ */
+.home-types__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+.home-types__card {
+    position: relative;
+    display: block;
+    border-radius: var(--ge-radius);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.home-types__card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.home-types__card:hover .home-types__card-img {
+    transform: scale(1.06);
+}
+
+.home-types__card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem;
+    z-index: 1;
+}
+
+.home-types__card-count {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ge-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+}
+
+.home-types__card-label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ge-white);
+    margin: 0;
+    line-height: 1.3;
+}
+
+@media (max-width: 767.98px) {
+    .home-types__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 479.98px) {
+    .home-types__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------------------------------------------------------
+   WHY CHOOSE GREWESTATES — Feature Items
+   ------------------------------------------------------------------ */
+.home-features__item {
+    padding: 1.5rem 1rem;
+}
+
+.home-features__icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: background-color var(--ge-transition), transform var(--ge-transition);
+}
+
+.home-features__icon-wrap i {
+    font-size: 1.5rem;
+    color: var(--ge-gold);
+}
+
+.home-features__item:hover .home-features__icon-wrap {
+    background-color: var(--ge-gold);
+    transform: translateY(-4px);
+}
+
+.home-features__item:hover .home-features__icon-wrap i {
+    color: var(--ge-dark);
+}
+
+.home-features__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.65rem;
+}
+
+.home-features__desc {
+    font-size: 0.9rem;
+    color: var(--ge-muted);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------
+   EXPLORE NEIGHBORHOODS
+   ------------------------------------------------------------------ */
+.home-neighborhoods__heading {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.home-neighborhoods__subtext {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 0;
+}
+
+/*
+ * Mosaic grid — design layout:
+ *   Column 1 (left):  4 small cards in a 2×2 arrangement
+ *   Column 2 (right): 1 tall card spanning both rows
+ *
+ * DOM order in template-home.php must be:
+ *   [0–3] the four normal cards (fill col 1 rows 1-2, then auto rows)
+ *   [4]   the tall card — explicitly placed col 2 / rows 1-2
+ *
+ * grid-auto-rows keeps small cards uniform.
+ */
+.home-neighborhoods__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    grid-auto-rows: 200px;
+    gap: 0.75rem;
+}
+
+/* Tall card: pinned explicitly to column 2, spanning both rows */
+.home-neighborhoods__card--tall {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.home-neighborhoods__card {
+    position: relative;
+    display: block;
+    border-radius: var(--ge-radius);
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.home-neighborhoods__card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.home-neighborhoods__card:hover .home-neighborhoods__card-img {
+    transform: scale(1.05);
+}
+
+.home-neighborhoods__card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.1rem;
+    z-index: 1;
+}
+
+.home-neighborhoods__card-count {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ge-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+}
+
+.home-neighborhoods__card-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ge-white);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+}
+
+.home-neighborhoods__card-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Tall card gets larger text */
+.home-neighborhoods__card--tall .home-neighborhoods__card-label {
+    font-size: 1.15rem;
+}
+
+@media (max-width: 767.98px) {
+    .home-neighborhoods__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-auto-rows: auto;
+    }
+
+    /* Reset explicit placement — all cards stack in single column */
+    .home-neighborhoods__card--tall {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 200px;
+    }
+
+    .home-neighborhoods__card {
+        min-height: 180px;
+    }
+}
+
+/* ------------------------------------------------------------------
+   TESTIMONIALS
+   ------------------------------------------------------------------ */
+.home-testimonials__card {
+    border: none;
+}
+
+.home-testimonials__avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.home-testimonials__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+}
+
+.home-testimonials__meta {
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+}
+
+.home-testimonials__stars {
+    color: var(--ge-gold);
+    font-size: 0.85rem;
+    display: flex;
+    gap: 0.15rem;
+}
+
+.home-testimonials__quote {
+    font-size: 0.9rem;
+    color: var(--ge-muted);
+    line-height: 1.75;
+    font-style: italic;
+}

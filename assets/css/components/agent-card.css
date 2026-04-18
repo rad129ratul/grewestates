@@ -1,0 +1,109 @@
+/* =============================================================
+   File: grewestates/assets/css/components/agent-card.css
+   Purpose: Styles for the agent-card component.
+            Enqueued globally via inc/enqueue.php (grewestates-component-agent-card).
+   ============================================================= */
+
+.agent-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ------------------------------------------------------------------
+   PHOTO
+   ------------------------------------------------------------------ */
+.agent-card__image-wrap {
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.agent-card__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.agent-card:hover .agent-card__image {
+    transform: scale(1.04);
+}
+
+/* ------------------------------------------------------------------
+   BODY
+   ------------------------------------------------------------------ */
+.agent-card__body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.agent-card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.2rem;
+}
+
+.agent-card__title-role {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    margin-bottom: 0.75rem;
+}
+
+.agent-card__experience {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ge-gold);
+    background-color: rgba(201, 168, 76, 0.1);
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.agent-card__experience i {
+    font-size: 0.9rem;
+}
+
+/* ------------------------------------------------------------------
+   CONTACT LINKS
+   ------------------------------------------------------------------ */
+.agent-card__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+    margin-top: auto;
+}
+
+.agent-card__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.agent-card__contact-item i {
+    color: var(--ge-gold);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.agent-card__contact-item:hover {
+    color: var(--ge-gold);
+}
+
+/* ------------------------------------------------------------------
+   CTA BUTTON
+   ------------------------------------------------------------------ */
+.agent-card__cta {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}

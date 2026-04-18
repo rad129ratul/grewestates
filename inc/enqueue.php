@@ -7,10 +7,14 @@
  *   Google Fonts (Inter)
  *   Bootstrap Icons CSS
  *   Bootstrap 5 CSS
- *   grewestates-main CSS  ← depends on Bootstrap
+ *   grewestates-style  (design tokens — style.css)
+ *   grewestates-main   (layout, typography, utilities)
+ *   grewestates-header (navbar)
+ *   grewestates-footer (footer)
+ *   grewestates-components-* (reusable component styles)
  *
  *   Bootstrap 5 JS bundle (includes Popper)
- *   grewestates-main JS   ← depends on Bootstrap JS
+ *   grewestates-main JS   (global interactions)
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -26,12 +30,11 @@ function grewestates_enqueue_assets() {
     // ------------------------------------------------------------------
 
     // Google Fonts — Inter (300, 400, 500, 600, 700).
-    // Loaded via WP so it participates in the resource-hint queue.
     wp_enqueue_style(
         'grewestates-google-fonts',
         'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
         [],
-        null // External URL — no version fingerprint.
+        null
     );
 
     // Bootstrap Icons 1.11.
@@ -58,7 +61,7 @@ function grewestates_enqueue_assets() {
         $version
     );
 
-    // Main theme CSS — layout, typography overrides, global components.
+    // Main theme CSS — layout, typography overrides, global utilities.
     wp_enqueue_style(
         'grewestates-main',
         $uri . '/assets/css/main.css',
@@ -78,6 +81,34 @@ function grewestates_enqueue_assets() {
     wp_enqueue_style(
         'grewestates-footer',
         $uri . '/assets/css/footer.css',
+        [ 'grewestates-main' ],
+        $version
+    );
+
+    // ------------------------------------------------------------------
+    // COMPONENT STYLES — loaded globally (components appear site-wide).
+    // ------------------------------------------------------------------
+
+    // Property card — used on home, properties listing, and single pages.
+    wp_enqueue_style(
+        'grewestates-component-property-card',
+        $uri . '/assets/css/components/property-card.css',
+        [ 'grewestates-main' ],
+        $version
+    );
+
+    // Agent card — used on home and agents page.
+    wp_enqueue_style(
+        'grewestates-component-agent-card',
+        $uri . '/assets/css/components/agent-card.css',
+        [ 'grewestates-main' ],
+        $version
+    );
+
+    // Section header + CTA banner — used across all page templates.
+    wp_enqueue_style(
+        'grewestates-component-section-header',
+        $uri . '/assets/css/components/section-header.css',
         [ 'grewestates-main' ],
         $version
     );
@@ -155,16 +186,15 @@ function grewestates_enqueue_assets() {
     // ------------------------------------------------------------------
 
     // Bootstrap 5.3 JS bundle (includes Popper 2).
-    // Loaded in footer to avoid render-blocking.
     wp_enqueue_script(
         'bootstrap',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
         [],
         '5.3.3',
-        true // Load in footer.
+        true
     );
 
-    // Main theme JS — global interactions (navbar scroll, etc.).
+    // Main theme JS — navbar scroll state, active link marking.
     wp_enqueue_script(
         'grewestates-main',
         $uri . '/assets/js/main.js',
@@ -212,7 +242,7 @@ add_action( 'wp_enqueue_scripts', 'grewestates_dequeue_defaults', 20 );
 
 function grewestates_dequeue_defaults() {
     // jQuery is unnecessary — Bootstrap 5 is vanilla JS.
-    // Priority 20 guarantees this runs after WP's default registrations at priority 10.
+    // Priority 20 runs after WP's default registrations at priority 10.
     wp_dequeue_script( 'jquery' );
     wp_deregister_script( 'jquery' );
 }
