@@ -209,3 +209,65 @@ p {
     outline: 2px solid var(--ge-gold);
     outline-offset: 3px;
 }
+
+/* =============================================================
+   BREADCRUMB COMPONENT
+   Append this block to: grewestates/assets/css/main.css
+   Purpose: Dark top strip breadcrumb — used on property single,
+            properties listing, and any interior page.
+   ============================================================= */
+
+.ge-breadcrumb {
+    background-color: var(--ge-dark);
+    padding: 0.75rem 0;
+}
+
+.ge-breadcrumb__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+}
+
+.ge-breadcrumb__item {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.ge-breadcrumb__link {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.ge-breadcrumb__link:hover {
+    color: var(--ge-gold);
+}
+
+.ge-breadcrumb__sep {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 0.1rem;
+}
+
+.ge-breadcrumb__current {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    /* Truncate very long titles on mobile */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+
+@media (max-width: 575.98px) {
+    .ge-breadcrumb__current {
+        max-width: 160px;
+    }
+}

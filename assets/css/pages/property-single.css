@@ -1,0 +1,752 @@
+/* =============================================================
+   File: grewestates/assets/css/pages/property-single.css
+   Purpose: Styles exclusive to the Property Single / Detail page.
+   Depends on: main.css (tokens + utilities must be loaded first)
+   ============================================================= */
+
+
+/* ------------------------------------------------------------------
+   HERO — PROPERTY SUMMARY PANEL (left column)
+   ------------------------------------------------------------------ */
+.ps-hero {
+    padding: 3rem 0 4rem;
+    background: linear-gradient(135deg, var(--ge-dark) 0%, var(--ge-dark-2) 100%);
+}
+
+.ps-hero__panel {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--ge-radius);
+    padding: 2rem;
+    position: sticky;
+    top: 80px;
+}
+
+.ps-hero__price {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--ge-gold);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.ps-hero__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ge-white);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.ps-hero__location {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 1.5rem;
+}
+
+.ps-hero__location i {
+    color: var(--ge-gold);
+    font-size: 0.95rem;
+}
+
+/* ------------------------------------------------------------------
+   STATS STRIP: beds / baths / sqft / year
+   ------------------------------------------------------------------ */
+.ps-hero__stats {
+    display: flex;
+    align-items: stretch;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: var(--ge-radius);
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.ps-hero__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.ps-hero__stat-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--ge-white);
+    line-height: 1;
+}
+
+.ps-hero__stat-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    line-height: 1.3;
+}
+
+.ps-hero__stat-divider {
+    width: 1px;
+    background-color: var(--ge-border);
+    align-self: stretch;
+    margin: 0.25rem 0;
+    flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------------
+   PROPERTY ID + STATUS META ROWS
+   ------------------------------------------------------------------ */
+.ps-hero__meta {
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.ps-hero__meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.65rem 1rem;
+    gap: 0.5rem;
+}
+
+/* Alternate row shading for readability */
+.ps-hero__meta-row:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ps-hero__meta-label {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+}
+
+.ps-hero__meta-value {
+    font-size: 0.78rem;
+    color: var(--ge-white);
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------
+   CTA BUTTONS IN PANEL
+   ------------------------------------------------------------------ */
+.ps-hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.ps-hero__actions .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    padding: 0.65rem;
+}
+
+/* ------------------------------------------------------------------
+   GALLERY (right column)
+   ------------------------------------------------------------------ */
+.ps-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.ps-gallery__main {
+    border-radius: var(--ge-radius);
+    overflow: hidden;
+    line-height: 0;
+    /* Eliminates inline-block gap below image */
+}
+
+.ps-gallery__main-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.ps-gallery__main:hover .ps-gallery__main-img {
+    transform: scale(1.03);
+}
+
+/* Three thumbnails in a row */
+.ps-gallery__thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+}
+
+.ps-gallery__thumb {
+    border-radius: var(--ge-radius);
+    overflow: hidden;
+    position: relative;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.ps-gallery__thumb-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ps-gallery__thumb:hover .ps-gallery__thumb-img {
+    transform: scale(1.06);
+}
+
+/* Overflow counter overlay on third thumbnail */
+.ps-gallery__more-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(26, 26, 26, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ps-gallery__more-count {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ge-white);
+    line-height: 1;
+}
+
+
+/* ------------------------------------------------------------------
+   SHARED SECTION TITLE STYLE
+   Used across all ps-* sections for consistent headings.
+   ------------------------------------------------------------------ */
+.ps-section-title {
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 0.5rem;
+}
+
+
+/* ------------------------------------------------------------------
+   ABOUT — DESCRIPTION + AGENT SIDEBAR
+   ------------------------------------------------------------------ */
+
+/* Description paragraphs inherit body style; muted colour applied */
+.ps-about .entry-content p,
+.ps-about>.container p {
+    color: var(--ge-muted);
+}
+
+/* ------------------------------------------------------------------
+   AGENT SIDEBAR CARD
+   Distinct from the reusable agent-card.php component — this is
+   a sidebar variant with rating, response time, and action row.
+   ------------------------------------------------------------------ */
+.ps-agent-card {
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 1.5rem;
+    position: sticky;
+    top: 80px;
+    /* Clear sticky navbar */
+}
+
+.ps-agent-card__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.ps-agent-card__photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid var(--ge-gold);
+}
+
+.ps-agent-card__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.ps-agent-card__name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.15rem;
+}
+
+.ps-agent-card__role {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ge-muted);
+    margin-bottom: 0.4rem;
+}
+
+/* Star rating row */
+.ps-agent-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    color: var(--ge-gold);
+    font-size: 0.8rem;
+}
+
+.ps-agent-card__rating-count {
+    font-size: 0.75rem;
+    color: var(--ge-muted);
+    margin-left: 0.35rem;
+}
+
+/* ------------------------------------------------------------------
+   AGENT BADGE PILLS (experience + response time)
+   ------------------------------------------------------------------ */
+.ps-agent-card__badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.ps-agent-card__badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--ge-dark);
+    background-color: var(--ge-light-bg);
+    padding: 0.45rem 0.85rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.ps-agent-card__badge i {
+    color: var(--ge-gold);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Call button */
+.ps-agent-card__call {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+/* Email + Message secondary row */
+.ps-agent-card__secondary-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.ps-agent-card__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ge-dark);
+    background-color: var(--ge-light-bg);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 0.5rem;
+    text-decoration: none;
+    transition: background-color var(--ge-transition), color var(--ge-transition);
+}
+
+.ps-agent-card__action-btn i {
+    color: var(--ge-gold);
+    font-size: 0.9rem;
+}
+
+.ps-agent-card__action-btn:hover {
+    background-color: var(--ge-gold);
+    border-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+.ps-agent-card__action-btn:hover i {
+    color: var(--ge-dark);
+}
+
+
+/* ------------------------------------------------------------------
+   AMENITIES GRID — 5 columns (2 rows of 5)
+   ------------------------------------------------------------------ */
+.ps-amenities__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.ps-amenities__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 1.25rem 0.75rem;
+    text-align: center;
+    transition: border-color var(--ge-transition), box-shadow var(--ge-transition), transform var(--ge-transition);
+}
+
+.ps-amenities__item:hover {
+    border-color: var(--ge-gold);
+    box-shadow: 0 4px 16px rgba(201, 168, 76, 0.15);
+    transform: translateY(-3px);
+}
+
+.ps-amenities__icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color var(--ge-transition);
+}
+
+.ps-amenities__icon-wrap i {
+    font-size: 1.25rem;
+    color: var(--ge-gold);
+}
+
+.ps-amenities__item:hover .ps-amenities__icon-wrap {
+    background-color: var(--ge-gold);
+}
+
+.ps-amenities__item:hover .ps-amenities__icon-wrap i {
+    color: var(--ge-dark);
+}
+
+.ps-amenities__label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ge-dark);
+    line-height: 1.3;
+}
+
+@media (max-width: 991.98px) {
+    .ps-amenities__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .ps-amenities__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   PROPERTY DETAILS TABLE
+   Striped key-value rows — two side-by-side columns.
+   ------------------------------------------------------------------ */
+.ps-details__list {
+    margin: 0;
+    padding: 0;
+    /* Remove default dl margin */
+}
+
+.ps-details__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--ge-border);
+    gap: 1rem;
+}
+
+/* Alternate shading — even rows in left column, odd in right column
+   share the same pattern because they are sibling cols */
+.ps-details__row:nth-child(odd) {
+    background-color: var(--ge-light-bg);
+}
+
+.ps-details__label {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    font-weight: 500;
+    /* dt by default is bold — override */
+    font-weight: 500;
+    margin: 0;
+}
+
+.ps-details__value {
+    font-size: 0.82rem;
+    color: var(--ge-dark);
+    font-weight: 700;
+    text-align: right;
+    margin: 0;
+}
+
+/* Left col gets a right border to visually separate from right col */
+@media (min-width: 768px) {
+    .col-md-6:first-child .ps-details__list {
+        border-right: 1px solid var(--ge-border);
+    }
+}
+
+/* On mobile the two columns stack; add top border on second */
+@media (max-width: 767.98px) {
+    .col-md-6:last-child .ps-details__list {
+        border-top: 1px solid var(--ge-border);
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   FLOOR PLAN PLACEHOLDER
+   ------------------------------------------------------------------ */
+.ps-floorplan__placeholder {
+    margin-top: 2rem;
+    background-color: var(--ge-white);
+    border: 2px dashed var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ps-floorplan__icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.ps-floorplan__icon-wrap i {
+    font-size: 2rem;
+    color: var(--ge-gold);
+}
+
+.ps-floorplan__label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin: 0;
+}
+
+.ps-floorplan__sub {
+    font-size: 0.875rem;
+    color: var(--ge-muted);
+    margin: 0;
+}
+
+.ps-floorplan__cta {
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.75rem;
+}
+
+
+/* ------------------------------------------------------------------
+   LOCATION & NEIGHBORHOOD
+   ------------------------------------------------------------------ */
+.ps-location__map-placeholder {
+    margin-top: 2rem;
+    background-color: var(--ge-light-bg);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Subtle grid pattern to suggest a map background */
+.ps-location__map-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(var(--ge-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ge-border) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.6;
+}
+
+.ps-location__map-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ps-location__map-icon {
+    font-size: 2.5rem;
+    color: var(--ge-gold);
+    margin-bottom: 0.25rem;
+}
+
+.ps-location__map-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin: 0;
+}
+
+.ps-location__map-sub {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    margin: 0;
+}
+
+/* POI columns */
+.ps-location__poi {
+    padding: 1.5rem;
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    height: 100%;
+}
+
+.ps-location__poi-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ps-location__poi-title i {
+    color: var(--ge-gold);
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.ps-location__poi-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ps-location__poi-list li {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+/* Gold bullet for each POI item */
+.ps-location__poi-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--ge-gold);
+}
+
+
+/* ------------------------------------------------------------------
+   SIMILAR PROPERTIES
+   Reuses property-card.php — only the col wrapper needs no extra CSS.
+   property-card.css handles card internals.
+   ------------------------------------------------------------------ */
+
+/* On similar properties the grid is a standard Bootstrap 3-col row.
+   Card image height is constrained so all cards are uniform. */
+.ps-similar .property-card__image-wrap {
+    max-height: 220px;
+}
+
+.ps-hero__panel .btn-outline-primary {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--ge-white);
+}
+
+.ps-hero__panel .btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--ge-white);
+    color: var(--ge-white);
+}
+
+.ps-agent-card__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ge-gold);
+    margin-bottom: 0.75rem;
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+   ------------------------------------------------------------------ */
+@media (max-width: 991.98px) {
+
+    /* On tablet, panel and agent card stop being sticky */
+    .ps-hero__panel,
+    .ps-agent-card {
+        position: static;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .ps-hero {
+        padding: 2rem 0 3rem;
+    }
+
+    .ps-gallery__main-img {
+        height: 240px;
+    }
+
+    .ps-gallery__thumb-img {
+        height: 100px;
+    }
+
+    .ps-hero__stats {
+        flex-wrap: wrap;
+        row-gap: 0.75rem;
+    }
+
+    .ps-hero__stat {
+        flex: 0 0 50%;
+    }
+
+    /* Hide inner dividers when stats wrap */
+    .ps-hero__stat-divider {
+        display: none;
+    }
+}

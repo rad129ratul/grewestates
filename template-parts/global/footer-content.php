@@ -2,8 +2,11 @@
 /**
  * File: grewestates/template-parts/global/footer-content.php
  * Purpose: Full footer markup — brand column, nav link columns,
- *          contact column, and copyright bar.
+ *          contact column, newsletter row, and copyright bar.
  * Loaded via get_template_part() from footer.php.
+ *
+ * Changelog:
+ *   v1.1 — Added newsletter subscription row above the copyright bar.
  */
 
 $logo_white = get_template_directory_uri() . '/assets/images/logo-white.svg';
@@ -120,6 +123,41 @@ $social_channels = [
             </div>
 
         </div><!-- .row -->
+
+        <!-- NEWSLETTER ROW
+             Sits between the link columns and the copyright bar.
+             Intentionally full-width inside the container. -->
+        <div class="site-footer__newsletter">
+            <div class="row align-items-center g-3">
+                <div class="col-lg-6">
+                    <p class="site-footer__newsletter-heading">
+                        <?php esc_html_e( 'Subscribe to Our Newsletter', 'grewestates' ); ?>
+                    </p>
+                    <p class="site-footer__newsletter-sub">
+                        <?php esc_html_e( 'Get the latest property listings and real estate insights delivered to your inbox.', 'grewestates' ); ?>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Markup only — form submission wired per-project (Mailchimp/CF7/etc.) -->
+                    <div class="site-footer__newsletter-form"
+                         role="search"
+                         aria-label="<?php esc_attr_e( 'Newsletter subscription', 'grewestates' ); ?>">
+                        <label for="footer-newsletter-email" class="visually-hidden">
+                            <?php esc_html_e( 'Your email address', 'grewestates' ); ?>
+                        </label>
+                        <input type="email"
+                               id="footer-newsletter-email"
+                               class="site-footer__newsletter-input"
+                               placeholder="<?php esc_attr_e( 'Enter your email address', 'grewestates' ); ?>"
+                               autocomplete="email">
+                        <button type="button" class="btn btn-primary site-footer__newsletter-btn">
+                            <?php esc_html_e( 'Subscribe', 'grewestates' ); ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .site-footer__newsletter -->
+
     </div><!-- .container -->
 
     <!-- COPYRIGHT BAR -->
@@ -131,10 +169,17 @@ $social_channels = [
                     <?php echo esc_html( get_bloginfo( 'name' ) ); ?>.
                     <?php esc_html_e( 'All rights reserved.', 'grewestates' ); ?>
                 </p>
-                <p class="mb-0">
-                    <?php esc_html_e( 'Crafted by', 'grewestates' ); ?>
-                    <a href="https://grewdev.com" target="_blank" rel="noopener noreferrer">GrewDev</a>
-                </p>
+                <div class="site-footer__legal-links">
+                    <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">
+                        <?php esc_html_e( 'Privacy Policy', 'grewestates' ); ?>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/terms-of-service/' ) ); ?>">
+                        <?php esc_html_e( 'Terms of Service', 'grewestates' ); ?>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/cookie-policy/' ) ); ?>">
+                        <?php esc_html_e( 'Cookie Policy', 'grewestates' ); ?>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
