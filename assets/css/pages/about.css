@@ -1,0 +1,472 @@
+/* =============================================================
+   File: grewestates/assets/css/pages/about.css
+   Purpose: Styles exclusive to the About Us page template.
+   Depends on: main.css (tokens + utilities must be loaded first)
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   PAGE HERO
+   Light background strip with breadcrumb + large heading.
+   ------------------------------------------------------------------ */
+.about-hero {
+    background: linear-gradient(135deg, var(--ge-light-bg) 0%, var(--ge-white) 100%);
+    padding: 3rem 0 3.5rem;
+    border-bottom: 1px solid var(--ge-border);
+}
+
+.about-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    gap: 0;
+}
+
+.about-hero__breadcrumb-item {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+}
+
+.about-hero__breadcrumb-item a {
+    color: var(--ge-muted);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.about-hero__breadcrumb-item a:hover {
+    color: var(--ge-gold);
+}
+
+/* Slash separator between items */
+.about-hero__breadcrumb-item+.about-hero__breadcrumb-item::before {
+    content: '/';
+    margin: 0 0.5rem;
+    color: var(--ge-border);
+}
+
+.about-hero__breadcrumb-item--active {
+    color: var(--ge-dark);
+    font-weight: 500;
+}
+
+.about-hero__content {
+    max-width: 680px;
+}
+
+.about-hero__heading {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ge-dark);
+    margin-bottom: 1.25rem;
+}
+
+.about-hero__subtext {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--ge-muted);
+    max-width: 540px;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------
+   OUR STORY
+   Two-column: image with floating badge on left, copy on right.
+   ------------------------------------------------------------------ */
+.about-story__image-wrap {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.about-story__image {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: var(--ge-radius);
+    display: block;
+}
+
+/* Floating gold stat badge — bottom-left corner of the image */
+.about-story__badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background-color: var(--ge-dark);
+    border: 2px solid var(--ge-gold);
+    border-radius: var(--ge-radius);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.about-story__badge-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--ge-gold);
+    line-height: 1;
+}
+
+.about-story__badge-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.about-story__heading {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 0.5rem;
+}
+
+/* Story paragraphs */
+.about-story p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--ge-muted);
+}
+
+/* Gold brand name accent — first mention of GrewEstates in copy */
+.about-story__brand {
+    color: var(--ge-gold);
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------------
+   MISSION & VISION CARDS
+   Two bordered cards on light background.
+   ------------------------------------------------------------------ */
+.about-mv__card {
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 2rem;
+    height: 100%;
+    transition: box-shadow var(--ge-transition), border-color var(--ge-transition);
+}
+
+.about-mv__card:hover {
+    border-color: var(--ge-gold);
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.1);
+}
+
+.about-mv__icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    transition: background-color var(--ge-transition);
+}
+
+.about-mv__card:hover .about-mv__icon-wrap {
+    background-color: var(--ge-gold);
+}
+
+.about-mv__icon-wrap i {
+    font-size: 1.35rem;
+    color: var(--ge-gold);
+    transition: color var(--ge-transition);
+}
+
+.about-mv__card:hover .about-mv__icon-wrap i {
+    color: var(--ge-dark);
+}
+
+.about-mv__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.75rem;
+}
+
+.about-mv__text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--ge-muted);
+}
+
+/* ------------------------------------------------------------------
+   IMPACT IN NUMBERS
+   Full-width dark band with 4 gold stat counters.
+   ------------------------------------------------------------------ */
+.about-stats {
+    background-color: var(--ge-dark);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gold accent behind stats */
+.about-stats::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(201, 168, 76, 0.07) 0%,
+            transparent 55%);
+    pointer-events: none;
+}
+
+.about-stats__heading {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 800;
+    color: var(--ge-white);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.about-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+}
+
+.about-stats__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.5rem 1rem;
+    position: relative;
+}
+
+/* Vertical divider between stat items */
+.about-stats__item+.about-stats__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.about-stats__value {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--ge-gold);
+    line-height: 1;
+}
+
+.about-stats__label {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+@media (max-width: 767.98px) {
+    .about-stats__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+
+    .about-stats__item::before {
+        display: none;
+    }
+
+    .about-stats__item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    /* Remove border on right-edge and last-row items */
+    .about-stats__item:nth-child(2n) {
+        border-right: none;
+    }
+
+    .about-stats__item:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+}
+
+/* ------------------------------------------------------------------
+   WHY CHOOSE US — Bordered feature cards
+   Same icon structure as home page but uses a bordered card shell.
+   ------------------------------------------------------------------ */
+.about-why__card {
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 1.75rem 1.5rem;
+    height: 100%;
+    text-align: left;
+    transition: box-shadow var(--ge-transition), border-color var(--ge-transition), transform var(--ge-transition);
+}
+
+.about-why__card:hover {
+    box-shadow: var(--ge-shadow);
+    border-color: var(--ge-gold);
+    transform: translateY(-3px);
+}
+
+.about-why__icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+    transition: background-color var(--ge-transition);
+}
+
+.about-why__card:hover .about-why__icon-wrap {
+    background-color: var(--ge-gold);
+}
+
+.about-why__icon-wrap i {
+    font-size: 1.25rem;
+    color: var(--ge-gold);
+    transition: color var(--ge-transition);
+}
+
+.about-why__card:hover .about-why__icon-wrap i {
+    color: var(--ge-dark);
+}
+
+.about-why__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.6rem;
+}
+
+.about-why__desc {
+    font-size: 0.875rem;
+    color: var(--ge-muted);
+    line-height: 1.7;
+}
+
+/* ------------------------------------------------------------------
+   LEADERSHIP TEAM CARDS
+   Photo on top, name, role label (gold), short bio.
+   ------------------------------------------------------------------ */
+.about-team__card {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-team__image-wrap {
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.about-team__image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.about-team__card:hover .about-team__image {
+    transform: scale(1.04);
+}
+
+.about-team__body {
+    padding: 1.25rem;
+    flex: 1;
+}
+
+.about-team__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.2rem;
+}
+
+.about-team__role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ge-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+}
+
+.about-team__bio {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--ge-muted);
+}
+
+/* ------------------------------------------------------------------
+   CLIENT SUCCESS STORIES / TESTIMONIALS
+   Same structure as home-testimonials — scoped to about page.
+   ------------------------------------------------------------------ */
+.about-testimonials__card {
+    border: none;
+}
+
+.about-testimonials__avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.about-testimonials__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+}
+
+.about-testimonials__meta {
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+}
+
+.about-testimonials__stars {
+    color: var(--ge-gold);
+    font-size: 0.85rem;
+    display: flex;
+    gap: 0.15rem;
+}
+
+.about-testimonials__quote {
+    font-size: 0.9rem;
+    color: var(--ge-muted);
+    line-height: 1.75;
+    font-style: italic;
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------ */
+@media (max-width: 767.98px) {
+    .about-story__image {
+        height: 320px;
+    }
+
+    .about-story__badge {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 0.75rem 1.1rem;
+    }
+
+    .about-story__badge-value {
+        font-size: 1.5rem;
+    }
+}
