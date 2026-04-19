@@ -1,0 +1,489 @@
+/* =============================================================
+   File: grewestates/assets/css/pages/agents.css
+   Purpose: Styles exclusive to the Find Agents page template.
+   Depends on: main.css (tokens + utilities must be loaded first)
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   PAGE HERO
+   Dark gradient; left-aligned content, breadcrumb, heading, CTA.
+   ------------------------------------------------------------------ */
+.agents-hero {
+    background: linear-gradient(135deg, var(--ge-dark) 0%, var(--ge-dark-2) 100%);
+    padding: 4rem 0 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle gold texture accent — consistent with contact-hero and cta-banner */
+.agents-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(201, 168, 76, 0.08) 0%,
+            transparent 55%);
+    pointer-events: none;
+}
+
+.agents-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ------------------------------------------------------------------
+   BREADCRUMB (hero — light on dark)
+   ------------------------------------------------------------------ */
+.agents-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    gap: 0;
+}
+
+.agents-hero__breadcrumb-item {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.agents-hero__breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.agents-hero__breadcrumb-item a:hover {
+    color: var(--ge-gold);
+}
+
+.agents-hero__breadcrumb-item+.agents-hero__breadcrumb-item::before {
+    content: '/';
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.agents-hero__breadcrumb-item--active {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ------------------------------------------------------------------
+   HERO CONTENT
+   ------------------------------------------------------------------ */
+.agents-hero__content {
+    max-width: 600px;
+}
+
+.agents-hero__heading {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ge-white);
+    margin-bottom: 1.1rem;
+}
+
+.agents-hero__subtext {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 480px;
+    margin-bottom: 2rem;
+}
+
+/* "Browse Agents" — gold outline button on dark background */
+.agents-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.75rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 2px solid var(--ge-gold);
+    border-radius: var(--ge-radius);
+    color: var(--ge-gold);
+    background-color: transparent;
+    text-decoration: none;
+    transition: background-color var(--ge-transition), color var(--ge-transition);
+}
+
+.agents-hero__btn:hover {
+    background-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+/* ------------------------------------------------------------------
+   AGENT GRID SECTION — TOOLBAR (heading + count + sort)
+   ------------------------------------------------------------------ */
+.agents-grid-section__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.agents-grid-section__count {
+    font-size: 0.875rem;
+    color: var(--ge-muted);
+    margin: 0;
+}
+
+/* Sort dropdown */
+.agents-grid-section__sort-select {
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 0.5rem 2rem 0.5rem 0.9rem;
+    font-size: 0.85rem;
+    font-family: var(--ge-font);
+    color: var(--ge-dark);
+    background-color: var(--ge-white);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%23666' d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--ge-transition);
+}
+
+.agents-grid-section__sort-select:focus {
+    border-color: var(--ge-gold);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+/* ------------------------------------------------------------------
+   AGENT GRID — 3-column responsive layout
+   ------------------------------------------------------------------ */
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1199.98px) {
+    .agents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .agents-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------------------------------------------------------
+   AGENT CARD — DETAILED VARIANT
+   Rich 3-column card: photo, badges, rating, location,
+   specializations, bio, languages, dual CTA buttons.
+   ------------------------------------------------------------------ */
+.agent-card-detailed {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* --- Photo area --- */
+.agent-card-detailed__image-wrap {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.agent-card-detailed__image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.agent-card-detailed:hover .agent-card-detailed__image {
+    transform: scale(1.04);
+}
+
+/* --- Badge pills overlaid on image (top-left) --- */
+.agent-card-detailed__badges {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    z-index: 2;
+}
+
+.agent-card-detailed__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+}
+
+/* Gold variant — "Highly Rated" / "Top Rated" */
+.agent-card-detailed__badge--popular,
+.agent-card-detailed__badge--top {
+    background-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+/* Dark variant — "Verified" */
+.agent-card-detailed__badge--verified {
+    background-color: var(--ge-dark);
+    color: var(--ge-white);
+}
+
+.agent-card-detailed__badge i {
+    font-size: 0.75rem;
+}
+
+/* --- Card body --- */
+.agent-card-detailed__body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.agent-card-detailed__name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.15rem;
+}
+
+.agent-card-detailed__title {
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+    margin-bottom: 0.85rem;
+}
+
+/* --- Rating + experience row --- */
+.agent-card-detailed__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.agent-card-detailed__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-size: 0.78rem;
+}
+
+.agent-card-detailed__rating .bi-star-fill {
+    color: var(--ge-gold);
+}
+
+.agent-card-detailed__rating .bi-star {
+    color: var(--ge-border);
+}
+
+.agent-card-detailed__rating-value {
+    font-weight: 700;
+    color: var(--ge-dark);
+    font-size: 0.82rem;
+    margin-left: 0.15rem;
+}
+
+.agent-card-detailed__review-count {
+    color: var(--ge-muted);
+    font-size: 0.75rem;
+}
+
+.agent-card-detailed__experience {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ge-muted);
+    white-space: nowrap;
+    background-color: var(--ge-light-bg);
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+    border: 1px solid var(--ge-border);
+}
+
+/* --- Location --- */
+.agent-card-detailed__location {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+    margin-bottom: 0.85rem;
+}
+
+.agent-card-detailed__location i {
+    color: var(--ge-gold);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+/* --- Specialization --- */
+.agent-card-detailed__spec {
+    margin-bottom: 0.85rem;
+}
+
+.agent-card-detailed__spec-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ge-dark);
+    margin-bottom: 0.4rem;
+}
+
+.agent-card-detailed__spec-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.agent-card-detailed__spec-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ge-dark);
+    background-color: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    line-height: 1.4;
+}
+
+/* --- Bio --- */
+.agent-card-detailed__bio {
+    font-size: 0.82rem;
+    color: var(--ge-muted);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+    flex: 1;
+}
+
+/* --- Languages --- */
+.agent-card-detailed__languages {
+    font-size: 0.78rem;
+    color: var(--ge-muted);
+    margin-bottom: 1.1rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid var(--ge-border);
+}
+
+.agent-card-detailed__languages-label {
+    font-weight: 700;
+    color: var(--ge-dark);
+}
+
+/* --- Action buttons --- */
+.agent-card-detailed__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+.agent-card-detailed__btn {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.55rem 0.75rem;
+    text-align: center;
+    border-radius: var(--ge-radius);
+}
+
+/* ------------------------------------------------------------------
+   TESTIMONIALS (agents page scoped variant)
+   Same card structure as home/about — scoped class prevents conflicts.
+   ------------------------------------------------------------------ */
+.agents-testimonials__card {
+    border: none;
+}
+
+.agents-testimonials__reviewer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+.agents-testimonials__avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.agents-testimonials__name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.1rem;
+}
+
+.agents-testimonials__meta {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+    line-height: 1.4;
+}
+
+/* Location sits on its own line, right-aligned visually via block display */
+.agents-testimonials__location {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ge-gold);
+    font-weight: 500;
+}
+
+.agents-testimonials__stars {
+    display: flex;
+    gap: 0.15rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.85rem;
+}
+
+.agents-testimonials__stars .bi-star-fill {
+    color: var(--ge-gold);
+}
+
+.agents-testimonials__stars .bi-star {
+    color: var(--ge-border);
+}
+
+.agents-testimonials__quote {
+    font-size: 0.88rem;
+    color: var(--ge-muted);
+    line-height: 1.75;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-inline-start: 0;
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE — HERO
+   ------------------------------------------------------------------ */
+@media (max-width: 767.98px) {
+    .agents-hero {
+        padding: 3rem 0 4rem;
+    }
+
+    .agents-hero__heading {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+}
