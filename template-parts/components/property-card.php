@@ -34,7 +34,7 @@ $badge_class = ( 'rent' === $prop['badge'] )
     ? 'ge-badge--rent'
     : 'ge-badge--sale';
 
-$detail_url = home_url( '/properties/' . (int) $prop['id'] . '/' );
+$detail_url = home_url( '/property-detail/' );
 
 $card_class = 'listing' === $variant
     ? 'property-card property-card--listing ge-card'

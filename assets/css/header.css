@@ -168,4 +168,21 @@
         width: 100%;
         text-align: center;
     }
+
+    .site-navbar .navbar-nav {
+        gap: 10;
+    }
+}
+
+/* Logo visibility control */
+.site-navbar .logo-light {
+    display: none;
+}
+
+.site-navbar--scrolled .logo-dark {
+    display: none;
+}
+
+.site-navbar--scrolled .logo-light {
+    display: block;
 }
