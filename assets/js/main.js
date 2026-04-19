@@ -11,6 +11,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initNavbarScrollState();
     initActiveNavLink();
+    initGoBack();
 });
 
 /**
@@ -51,6 +52,27 @@ function initActiveNavLink() {
         if (linkPath === currentPath) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
+        }
+    });
+}
+
+/**
+ * Handles the "Go Back" button on the 404 page.
+ * Finds any element with [data-action="go-back"] and calls history.back().
+ * Falls back to the homepage if there is no browser history to go back to.
+ */
+function initGoBack() {
+    const goBackBtn = document.querySelector('[data-action="go-back"]');
+
+    if (!goBackBtn) return;
+
+    goBackBtn.addEventListener('click', () => {
+        // history.length <= 1 means the user landed here directly with no prior history.
+        if (history.length > 1) {
+            history.back();
+        } else {
+            // Fallback: navigate to homepage when there is no history to return to.
+            window.location.href = '/';
         }
     });
 }
