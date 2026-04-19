@@ -1,0 +1,611 @@
+/* =============================================================
+   File: grewestates/assets/css/pages/contact.css
+   Purpose: Styles exclusive to the Contact Us page template.
+   Depends on: main.css (tokens + utilities must be loaded first)
+   ============================================================= */
+
+/* ------------------------------------------------------------------
+   PAGE HERO
+   Dark gradient; left: intro + contact items; right: 2×2 stat grid.
+   ------------------------------------------------------------------ */
+.contact-hero {
+    background: linear-gradient(135deg, var(--ge-dark) 0%, var(--ge-dark-2) 100%);
+    padding: 3.5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle diagonal gold accent for depth — matches cta-banner pattern */
+.contact-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(201, 168, 76, 0.07) 0%,
+            transparent 55%);
+    pointer-events: none;
+}
+
+.contact-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ------------------------------------------------------------------
+   BREADCRUMB (hero variant — light on dark)
+   ------------------------------------------------------------------ */
+.contact-hero__breadcrumb {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    gap: 0;
+}
+
+.contact-hero__breadcrumb-item {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-hero__breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.contact-hero__breadcrumb-item a:hover {
+    color: var(--ge-gold);
+}
+
+.contact-hero__breadcrumb-item+.contact-hero__breadcrumb-item::before {
+    content: '/';
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.contact-hero__breadcrumb-item--active {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ------------------------------------------------------------------
+   HERO HEADING & SUBTEXT
+   ------------------------------------------------------------------ */
+.contact-hero__heading {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--ge-white);
+    margin-bottom: 1.1rem;
+}
+
+.contact-hero__subtext {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 420px;
+    margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------------------
+   HERO QUICK CONTACT ITEMS (Call / Email / Hours)
+   ------------------------------------------------------------------ */
+.contact-hero__quick-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-hero__quick-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.contact-hero__quick-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-hero__quick-icon i {
+    font-size: 0.95rem;
+    color: var(--ge-gold);
+}
+
+.contact-hero__quick-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.1rem;
+}
+
+.contact-hero__quick-value {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ge-white);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+a.contact-hero__quick-value:hover {
+    color: var(--ge-gold);
+}
+
+/* ------------------------------------------------------------------
+   HERO STAT GRID — 2×2 on right column
+   ------------------------------------------------------------------ */
+.contact-hero__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    height: 100%;
+}
+
+.contact-hero__stat {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--ge-radius);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color var(--ge-transition), background-color var(--ge-transition);
+}
+
+.contact-hero__stat:hover {
+    background-color: rgba(201, 168, 76, 0.08);
+    border-color: rgba(201, 168, 76, 0.3);
+}
+
+.contact-hero__stat-icon {
+    margin-bottom: 0.35rem;
+}
+
+.contact-hero__stat-icon i {
+    font-size: 1.35rem;
+    color: var(--ge-gold);
+}
+
+.contact-hero__stat-value {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: var(--ge-white);
+    line-height: 1;
+}
+
+.contact-hero__stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+}
+
+/* ------------------------------------------------------------------
+   CONTACT FORM CARD
+   White card with form fields.
+   ------------------------------------------------------------------ */
+.contact-form-card {
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 2rem;
+    box-shadow: var(--ge-shadow);
+}
+
+.contact-form-card__title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 0.35rem;
+}
+
+.contact-form-card__sub {
+    font-size: 0.875rem;
+    color: var(--ge-muted);
+    margin-bottom: 1.75rem;
+}
+
+.contact-form-card__label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ge-dark);
+    margin-bottom: 0.4rem;
+}
+
+.contact-form-card__required {
+    color: var(--ge-gold);
+    margin-left: 0.15rem;
+}
+
+.contact-form-card__input,
+.contact-form-card__textarea {
+    width: 100%;
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+    font-family: var(--ge-font);
+    color: var(--ge-text);
+    background-color: var(--ge-white);
+    outline: none;
+    transition: border-color var(--ge-transition), box-shadow var(--ge-transition);
+}
+
+.contact-form-card__input::placeholder,
+.contact-form-card__textarea::placeholder {
+    color: var(--ge-muted);
+    opacity: 0.7;
+}
+
+.contact-form-card__input:focus,
+.contact-form-card__textarea:focus {
+    border-color: var(--ge-gold);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+/* Validation error state */
+.contact-form-card__input--error,
+.contact-form-card__textarea--error {
+    border-color: #dc3545;
+}
+
+.contact-form-card__error {
+    display: block;
+    font-size: 0.75rem;
+    color: #dc3545;
+    margin-top: 0.3rem;
+    min-height: 1.1em;
+}
+
+.contact-form-card__textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* ------------------------------------------------------------------
+   PREFERRED CONTACT METHOD RADIOS
+   ------------------------------------------------------------------ */
+.contact-form-card__radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.contact-form-card__radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.875rem;
+    color: var(--ge-text);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.contact-form-card__radio {
+    accent-color: var(--ge-gold);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------------
+   FORM SUBMIT BUTTON & FEEDBACK
+   ------------------------------------------------------------------ */
+.contact-form-card__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: background-color var(--ge-transition), opacity var(--ge-transition);
+}
+
+.contact-form-card__submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.contact-form-card__feedback {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    text-align: center;
+    min-height: 1.5em;
+}
+
+.contact-form-card__feedback--success {
+    color: #198754;
+    font-weight: 600;
+}
+
+.contact-form-card__feedback--error {
+    color: #dc3545;
+}
+
+/* ------------------------------------------------------------------
+   CONTACT SIDEBAR CARD (Get in Touch)
+   ------------------------------------------------------------------ */
+.contact-sidebar-card {
+    background-color: var(--ge-white);
+    border: 1px solid var(--ge-border);
+    border-radius: var(--ge-radius);
+    padding: 1.75rem;
+    box-shadow: var(--ge-shadow);
+}
+
+.contact-sidebar-card__title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 1.25rem;
+}
+
+.contact-sidebar-card__items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--ge-border);
+}
+
+.contact-sidebar-card__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.contact-sidebar-card__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: rgba(201, 168, 76, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-sidebar-card__icon i {
+    font-size: 0.85rem;
+    color: var(--ge-gold);
+}
+
+.contact-sidebar-card__detail {
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-sidebar-card__label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ge-muted);
+    margin-bottom: 0.1rem;
+}
+
+.contact-sidebar-card__value {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ge-dark);
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+a.contact-sidebar-card__value:hover {
+    color: var(--ge-gold);
+}
+
+/* ------------------------------------------------------------------
+   FOLLOW US — Social icons inside sidebar card
+   ------------------------------------------------------------------ */
+.contact-sidebar-card__social-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--ge-dark);
+    margin-bottom: 0.75rem;
+}
+
+.contact-sidebar-card__social-icons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contact-sidebar-card__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--ge-light-bg);
+    border: 1px solid var(--ge-border);
+    color: var(--ge-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color var(--ge-transition), color var(--ge-transition), border-color var(--ge-transition);
+}
+
+.contact-sidebar-card__social-link:hover {
+    background-color: var(--ge-gold);
+    border-color: var(--ge-gold);
+    color: var(--ge-dark);
+}
+
+/* ------------------------------------------------------------------
+   NEED URGENT HELP? — Gold accent card
+   ------------------------------------------------------------------ */
+.contact-urgent-card {
+    background-color: var(--ge-gold);
+    border-radius: var(--ge-radius);
+    padding: 1.5rem;
+}
+
+.contact-urgent-card__title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ge-dark);
+    margin-bottom: 0.5rem;
+}
+
+.contact-urgent-card__text {
+    font-size: 0.82rem;
+    color: rgba(26, 26, 26, 0.75);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.contact-urgent-card__btn {
+    background-color: var(--ge-dark);
+    color: var(--ge-white);
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: var(--ge-radius);
+    text-decoration: none;
+    transition: background-color var(--ge-transition);
+}
+
+.contact-urgent-card__btn:hover {
+    background-color: var(--ge-dark-2);
+    color: var(--ge-white);
+}
+
+/* ------------------------------------------------------------------
+   OFFICE LOCATION CARDS
+   ------------------------------------------------------------------ */
+.contact-office-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-office-card__image-wrap {
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.contact-office-card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.contact-office-card:hover .contact-office-card__image {
+    transform: scale(1.04);
+}
+
+.contact-office-card__body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-office-card__city {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ge-gold);
+    margin-bottom: 0.85rem;
+}
+
+.contact-office-card__details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    flex: 1;
+}
+
+.contact-office-card__detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--ge-muted);
+    line-height: 1.45;
+}
+
+.contact-office-card__detail-item i {
+    color: var(--ge-gold);
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+
+.contact-office-card__detail-item a {
+    color: var(--ge-muted);
+    text-decoration: none;
+    transition: color var(--ge-transition);
+}
+
+.contact-office-card__detail-item a:hover {
+    color: var(--ge-gold);
+}
+
+.contact-office-card__directions {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.6rem;
+    margin-top: auto;
+}
+
+/* ------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------ */
+@media (max-width: 991.98px) {
+    .contact-hero {
+        padding: 2.5rem 0 3rem;
+    }
+
+    .contact-hero__subtext {
+        max-width: 100%;
+    }
+
+    .contact-hero__stats {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contact-hero__stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-form-card {
+        padding: 1.5rem;
+    }
+
+    .contact-form-card__radio-group {
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+}
